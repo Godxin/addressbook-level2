@@ -13,6 +13,10 @@ public class Address {
     public static final String ADDRESS_VALIDATION_REGEX = ".+";
 
     public final String value;
+    public Block BlockNumber;
+    public Street StreetName;
+    public Unit UnitNumber;
+    public Postal_Code PostalCode;
     private boolean isPrivate;
 
     /**
@@ -55,5 +59,57 @@ public class Address {
 
     public boolean isPrivate() {
         return isPrivate;
+    }
+}
+
+public class Block {
+
+    private final String BlockNumber;
+
+    public Block( String Block_Number){
+        BlockNumber = Block_Number;
+    }
+
+    public String getBlock(){
+        return BlockNumber;
+    }
+}
+
+public class Street {
+
+    private final String StreetName;
+
+    public Street( String Street_Name){
+        StreetName = Street_Name;
+    }
+
+    public String getStreet(){
+        return StreetName;
+    }
+}
+
+public class Unit {
+
+    private final String UnitNumber;
+
+    public Unit( String Unit_Number){
+        UnitNumber = Unit_Number;
+    }
+
+    public String getUnit(){
+        return UnitNumber;
+    }
+}
+
+public class Postal_Code {
+
+    private final String code;
+
+    public Block( String Pcode){
+        code = Pcode;
+    }
+
+    public String getPostalCode(){
+        return code;
     }
 }
