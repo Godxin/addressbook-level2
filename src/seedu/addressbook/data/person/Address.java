@@ -60,7 +60,7 @@ public class Address {
     public boolean equals(Object other) {
         return other == this // short circuit if same object
                 || (other instanceof Address // instanceof handles nulls
-                && this.value.equals(((Address) other).value)); // state check
+                && this.toString().equals(((Address) other).toString())); // state check
     }
 
     @Override
@@ -71,56 +71,55 @@ public class Address {
     public boolean isPrivate() {
         return isPrivate;
     }
-}
 
-public class Block {
 
-    private final String BlockNumber;
+    class Block {
+        private final String BlockNumber;
 
-    public Block( String Block_Number){
-        BlockNumber = Block_Number;
+        public Block( String Block_Number){
+            BlockNumber = Block_Number;
+     }
+         public String getBlock(){
+             return BlockNumber;
+        }
     }
 
-    public String getBlock(){
-        return BlockNumber;
-    }
-}
+    class Street {
 
-public class Street {
+        private final String StreetName;
 
-    private final String StreetName;
+        public Street( String Street_Name){
+            StreetName = Street_Name;
+        }
 
-    public Street( String Street_Name){
-        StreetName = Street_Name;
-    }
-
-    public String getStreet(){
-        return StreetName;
-    }
-}
-
-public class Unit {
-
-    private final String UnitNumber;
-
-    public Unit( String Unit_Number){
-        UnitNumber = Unit_Number;
+        public String getStreet(){
+            return StreetName;
+        }
     }
 
-    public String getUnit(){
-        return UnitNumber;
+    class Unit {
+
+        private final String UnitNumber;
+
+        public Unit( String Unit_Number){
+            UnitNumber = Unit_Number;
+        }
+
+        public String getUnit(){
+            return UnitNumber;
+        }
     }
-}
 
-public class Postal_Code {
+    class Postal_Code {
 
-    private final String code;
+        private final String code;
 
-    public Block( String Pcode){
-        code = Pcode;
-    }
+        public Block( String Pcode){
+            code = Pcode;
+        }
 
-    public String getPostalCode(){
-        return code;
+        public String getPostalCode(){
+            return code;
+        }
     }
 }
