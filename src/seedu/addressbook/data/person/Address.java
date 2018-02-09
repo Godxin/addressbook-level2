@@ -53,7 +53,7 @@ public class Address {
 
     @Override
     public String toString() {
-        return value;
+        return String.format("%s, %s, %s, %s", BlockNumber, StreetName, UnitNumber, PostalCode);
     }
 
     @Override
