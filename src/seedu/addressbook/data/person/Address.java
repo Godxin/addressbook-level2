@@ -9,24 +9,25 @@ import seedu.addressbook.data.exception.IllegalValueException;
 public class Address {
 
     public static final String EXAMPLE = "a/123, Clementi Ave 3, #12-34, 231534";
-    public static final String MESSAGE_ADDRESS_CONSTRAINTS = "Person addresses must contain the following fields: "
-            + "BLOCK, STREET, UNIT, POSTAL_CODE\n"
-    public static final String ADDRESS_VALIDATION_REGEX = ".+,.+,.+,.+";
-    public static final String ADDRESS_SPLIT_DELIMITER = ",";
+    private static final String MESSAGE_ADDRESS_CONSTRAINTS = "Person addresses must contain the following fields: "
+            + "BLOCK, STREET, UNIT, POSTAL_CODE\n";
+    private static final String ADDRESS_VALIDATION_REGEX = ".+,.+,.+,.+";
+    private static final String ADDRESS_SPLIT_DELIMITER = ",";
 
     private static final int BLOCK_INDEX = 0;
-+
+
     private static final int STREET_INDEX = 1;
-+
+
     private static final int UNIT_INDEX = 2;
-+
+
     private static final int POSTALCODE_INDEX = 3;
 
-    public final String value;
-    public Block BlockNumber;
-    public Street StreetName;
-    public Unit UnitNumber;
-    public Postal_Code PostalCode;
+
+    private Block blockNumber;
+    private Street streetName;
+    private Unit unitNumber;
+    private Postal_Code postalCode;
+
     private boolean isPrivate;
 
     /**
@@ -41,10 +42,10 @@ public class Address {
         if (!isValidAddress(trimmedAddress)) {
             throw new IllegalValueException(MESSAGE_ADDRESS_CONSTRAINTS);
         }
-        this.BlockNumber = new Block(SplitAddress[BLOCK_INDEX]);
-        this.StreetName = new Street(SplitAddress[STREET_INDEX]);
-        this.UnitNumber = new Unit(SplitAddress[UNIT_INDEX]);
-        this.PostalCode = new Postal_Code(SplitAddress[POSTALCODE_INDEX]);
+        blockNumber = new Block(SplitAddress[BLOCK_INDEX]);
+        streetName = new Street(SplitAddress[STREET_INDEX]);
+        unitNumber = new Unit(SplitAddress[UNIT_INDEX]);
+        postalCode = new Postal_Code(SplitAddress[POSTALCODE_INDEX]);
     }
 
     /**
@@ -56,7 +57,7 @@ public class Address {
 
     @Override
     public String toString() {
-        return String.format("%s, %s, %s, %s", BlockNumber, StreetName, UnitNumber, PostalCode);
+        return String.format("%s, %s, %s, %s", blockNumber, streetName, unitNumber, postalCode);
     }
 
     @Override
