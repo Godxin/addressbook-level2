@@ -22,7 +22,6 @@ public class FindCommand extends Command {
             + "Example: " + COMMAND_WORD + " alice bob charlie";
 
     private final Set<String> keywords;
-    private final Set<String> keywordsCaseInsensitive;
 
     public FindCommand(Set<String> keywords) {
         this.keywords = keywords;
@@ -41,7 +40,7 @@ public class FindCommand extends Command {
      * @return Returns a copy of keywords which are case-insensitive
      */
     public Set<String> getCaseInsensitiveKeywords(Set<String> keywords){
-
+        Set<String> keywordsCaseInsensitive;
         keywordsCaseInsensitive = new HashSet<>();
 
         for(String caseInKeywords : keywords){
