@@ -1,16 +1,12 @@
 package seedu.addressbook.commands;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 import seedu.addressbook.data.person.ReadOnlyPerson;
 
 /**
  * Finds and lists all persons in address book whose name contains any of the argument keywords.
- * Keyword matching is case sensitive.
+ * Keyword matching is case insensitive.
  */
 public class FindCommand extends Command {
 
@@ -39,10 +35,8 @@ public class FindCommand extends Command {
      * @param keywords
      * @return Returns a copy of keywords which are case-insensitive
      */
-    public Set<String> getCaseInsensitiveKeywords(Set<String> keywords){
-        Set<String> keywordsCaseInsensitive;
-        keywordsCaseInsensitive = new HashSet<>();
-
+    public Set<String> getCaseInsensitiveKeywords(Collection<String> keywords){
+        final Set<String> keywordsCaseInsensitive = new HashSet<>();
         for(String caseInKeywords : keywords){
             keywordsCaseInsensitive.add(caseInKeywords.toUpperCase());
         }
