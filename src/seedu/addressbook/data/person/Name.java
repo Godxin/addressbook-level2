@@ -44,7 +44,7 @@ public class Name {
     }
 
     /**
-     * Retrieves a listing of every caseinsensitive word in the name , in order.
+     * Retrieves a listing of every case-insensitive word in the name , in order.
      */
     public List<String> getWordsInNameCaseInsensitive() {
         return Arrays.asList(fullName.toUpperCase().split("\\s+"));
