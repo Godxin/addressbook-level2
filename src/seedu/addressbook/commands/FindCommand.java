@@ -17,11 +17,12 @@ public class FindCommand extends Command {
     public static final String COMMAND_WORD = "find";
 
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Finds all persons whose names contain any of "
-            + "the specified keywords (case-sensitive) and displays them as a list with index numbers.\n"
+            + "the specified keywords (case-insensitive) and displays them as a list with index numbers.\n"
             + "Parameters: KEYWORD [MORE_KEYWORDS]...\n"
             + "Example: " + COMMAND_WORD + " alice bob charlie";
 
     private final Set<String> keywords;
+    private final Set<String> keywordsCaseInsensitive;
 
     public FindCommand(Set<String> keywords) {
         this.keywords = keywords;
@@ -32,6 +33,21 @@ public class FindCommand extends Command {
      */
     public Set<String> getKeywords() {
         return new HashSet<>(keywords);
+    }
+
+    /**
+     *
+     * @param keywords
+     * @return Returns a copy of keywords which are case-insensitive
+     */
+    public Set<String> getCaseInsensitiveKeywords(Set<String> keywords){
+
+        keywordsCaseInsensitive = new HashSet<>();
+
+        for(String caseInKeywords : keywords){
+            keywordsCaseInsensitive.add(caseInKeywords.toUpperCase());
+        }
+        return keywordsCaseInsensitive;
     }
 
     @Override
@@ -48,9 +64,10 @@ public class FindCommand extends Command {
      */
     private List<ReadOnlyPerson> getPersonsWithNameContainingAnyKeyword(Set<String> keywords) {
         final List<ReadOnlyPerson> matchedPersons = new ArrayList<>();
+        Set<String> caseInsensitiveKeywords = new HashSet<String>(getCaseInsensitiveKeywords(keywords));
         for (ReadOnlyPerson person : addressBook.getAllPersons()) {
-            final Set<String> wordsInName = new HashSet<>(person.getName().getWordsInName());
-            if (!Collections.disjoint(wordsInName, keywords)) {
+            final Set<String> wordsInName = new HashSet<>(person.getName().getWordsInNameCaseInsensitive());
+            if (!Collections.disjoint(wordsInName, caseInsensitiveKeywords)) {
                 matchedPersons.add(person);
             }
         }
