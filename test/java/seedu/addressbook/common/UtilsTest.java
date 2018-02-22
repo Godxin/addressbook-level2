@@ -48,13 +48,13 @@ public class UtilsTest {
 
         //one null object
         assertExistsNullObjects((Object) null);
-        assertExistsNullObjects("no", "", "objects");
-        assertExistsNullObjects("any", "", "exists");
+        assertNoNullObjects("no", "", "objects");
+        assertNoNullObjects("any", "", "exists");
 
         //more than one null objects
         assertExistsNullObjects((Object) null);
-        assertExistsNullObjects("no", "null", "objects");
-        assertExistsNullObjects("any", "null", "exists");
+        assertExistsNullObjects("no", null, "objects");
+        assertExistsNullObjects("any", null, "exists");
     }
 
     private void assertAreUnique(Object... objects) {
